@@ -26,4 +26,4 @@ The invalid-login test uses a reserved `.invalid` username and verifies the obse
 
 `SF_LOGIN_URL` optionally overrides the default `https://login.salesforce.com/?locale=in`.
 
-The Allure Maven report is generated as part of `mvn verify`; raw results are written under `target/selenium-framework-build/allure-results`.
+The Allure Maven report is generated as part of `mvn verify` at `target/selenium-framework-build/site/allure-maven-plugin`; raw results are written under `allure-results`.
