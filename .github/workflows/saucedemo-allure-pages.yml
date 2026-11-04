@@ -1,0 +1,51 @@
+name: SauceDemo Allure Report
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - RICE_POT_Example/Selenium_framework/**
+      - .github/workflows/saucedemo-allure-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Run tests and generate Allure report
+        run: mvn -B -f RICE_POT_Example/Selenium_framework/pom.xml clean verify -Dheadless=true
+
+      - name: Upload Allure report
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: RICE_POT_Example/Selenium_framework/target/site/allure-maven-plugin
+
+      - name: Deploy Allure report
+        id: deployment
+        uses: actions/deploy-pages@v4
