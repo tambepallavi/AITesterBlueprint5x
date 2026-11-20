@@ -1,0 +1,31 @@
+:root { font-family: Arial, Helvetica, sans-serif; color: #172033; background: #f5f7fb; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { min-height: 100vh; }
+header { height: 72px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; background: white; border-bottom: 1px solid #d9deea; }
+h1 { font-size: 20px; margin: 0; }
+nav { display: flex; gap: 8px; }
+button { border: 1.5px solid #172033; border-radius: 8px; background: white; color: #172033; padding: 10px 14px; cursor: pointer; font-weight: 700; }
+button.active, button.save { background: #172033; color: white; }
+button:disabled { opacity: .55; cursor: wait; }
+.card { border: 1.5px solid #172033; border-radius: 12px; background: white; box-shadow: 0 3px 12px rgba(23,32,51,.06); }
+.layout { display: grid; grid-template-columns: minmax(260px, 360px) minmax(0, 1fr); gap: 20px; padding: 24px; }
+.form-card { padding: 20px; height: fit-content; }
+form { display: grid; gap: 14px; }
+label { font-weight: 700; display: grid; gap: 7px; }
+input { width: 100%; border: 1.5px solid #bac1cf; border-radius: 8px; padding: 11px; font-size: 15px; }
+.form-card p { color: #596477; line-height: 1.5; margin: 0; }
+.result-card { min-height: 520px; padding: 24px; overflow: auto; }
+.empty { color: #727b8d; text-align: center; margin-top: 180px; }
+.actions { display: flex; gap: 8px; margin-bottom: 16px; }
+.status { margin-top: 12px; border-radius: 8px; padding: 10px; background: #fff3e8; color: #834308; line-height: 1.45; }
+.source { color: #596477; margin: 0 0 12px; }
+.source a { color: #2058a5; }
+.strategy { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.55; margin: 0; }
+.settings-layout { display: grid; grid-template-columns: repeat(2, minmax(260px, 420px)); gap: 20px; padding: 24px; }
+.settings-card { padding: 20px; display: grid; gap: 14px; }
+.settings-card h2 { margin: 0 0 4px; text-align: center; }
+.field { font-size: 14px; }
+.settings-actions { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; }
+.settings-actions .status { margin: 0; }
+@media (max-width: 800px) { .layout, .settings-layout { grid-template-columns: 1fr; } .settings-actions { grid-column: auto; } }
